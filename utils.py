@@ -47,7 +47,6 @@ def calculate_metrics(y_true : np.array , y_pred : np.array) -> pd.DataFrame:
 
 def calculate_and_plot_confusion_matrix(y_true : np.array, y_pred : np.array):
     cm = confusion_matrix(y_true, y_pred)
-    cm = cm / cm.sum(axis = 1)[:, np.newaxis]
     labels = np.unique(y_true).astype('uint8')
     cm = pd.DataFrame(cm, columns = labels, index = labels)
     plt.figure(figsize = (10, 7))
