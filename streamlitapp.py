@@ -137,7 +137,7 @@ def main():
     # UI components
     activation = st.selectbox('Activation Function', ["Leaky-ReLU", "TanH"])
     context_length = st.selectbox('Context Length', [16, 32])
-    embedding_size = st.selectbox('Embedding Layer Size', [128, 256])
+    embedding_size = st.selectbox('Embedding Size', [128, 256])
     n = st.number_input(label="Enter the number of questions to be generated", min_value=1, step=1)
     max_length = st.slider("Max Length of the generated question", min_value=10, value = 64)
     random_seedd = st.number_input(label="Enter the random seed (if required, 0 indicates no random seed)", min_value=0, step=1)
