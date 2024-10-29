@@ -146,6 +146,8 @@ def main():
 
 
     if st.button("Generate Questions"):
+      if random_seedd!=0:
+          torch.manual_seed(random_seedd)
       for i in range(n):
         model_ = get_model(models, activation, embedding_size, context_length)
         generated_text = generate_text(
@@ -155,7 +157,7 @@ def main():
             block_size=context_length,
             context=user_input, 
             max_len = max_length,
-            random_seed = None if random_seedd == 0 else random_seedd
+            random_seed = None
         )
         st.write(generated_text)
 
