@@ -79,35 +79,35 @@ def load_models():
 
 
     model1 = NextWord(16, len(stoi), 128, [512, 512, 512], nn.LeakyReLU(negative_slope=0.01)).to(device)    
-    relu_128_16 = torch.load('LeakyReLU(negative_slope=0.01)_EMB128_Context16.pth', map_location = device)    
+    relu_128_16 = torch.load('models/LeakyReLU(negative_slope=0.01)_EMB128_Context16.pth', map_location = device)    
     relu_128_16 = {k.replace("_orig_mod.", ""): v for k, v in relu_128_16.items()}
     model1.load_state_dict(relu_128_16)
     model2 = NextWord(32, len(stoi), 128, [512, 512, 512], nn.LeakyReLU(negative_slope=0.01)).to(device)
-    relu_128_32 = torch.load('LeakyReLU(negative_slope=0.01)_EMB128_Context32.pth', map_location = device)
+    relu_128_32 = torch.load('models/LeakyReLU(negative_slope=0.01)_EMB128_Context32.pth', map_location = device)
     relu_128_32 = {k.replace("_orig_mod.", ""): v for k, v in relu_128_32.items()}
     model2.load_state_dict(relu_128_32)
     model3 = NextWord(16, len(stoi), 256, [512, 512, 512], nn.LeakyReLU(negative_slope=0.01)).to(device)
-    relu_256_16 = torch.load('LeakyReLU(negative_slope=0.01)_EMB256_Context16.pth', map_location = device)
+    relu_256_16 = torch.load('models/LeakyReLU(negative_slope=0.01)_EMB256_Context16.pth', map_location = device)
     relu_256_16 = {k.replace("_orig_mod.", ""): v for k, v in relu_256_16.items()}
     model3.load_state_dict(relu_256_16)
     model4 = NextWord(32, len(stoi), 256, [512, 512, 512], nn.LeakyReLU(negative_slope=0.01)).to(device)
-    relu_256_32 = torch.load('LeakyReLU(negative_slope=0.01)_EMB256_Context32.pth', map_location = device)
+    relu_256_32 = torch.load('models/LeakyReLU(negative_slope=0.01)_EMB256_Context32.pth', map_location = device)
     relu_256_32 = {k.replace("_orig_mod.", ""): v for k, v in relu_256_32.items()}
     model4.load_state_dict(relu_256_32)
     model5 = NextWord(16, len(stoi), 128, [512, 512, 512], nn.Tanh()).to(device)
-    tanh_128_16 = torch.load('Tanh()_EMB128_Context16.pth',map_location = device)
+    tanh_128_16 = torch.load('models/Tanh()_EMB128_Context16.pth',map_location = device)
     tanh_128_16 = {k.replace("_orig_mod.", ""): v for k, v in tanh_128_16.items()}
     model5.load_state_dict(tanh_128_16)
     model6 = NextWord(32, len(stoi), 128, [512, 512, 512], nn.Tanh()).to(device)
-    tanh_128_32 = torch.load('Tanh()_EMB128_Context32.pth',map_location = device)
+    tanh_128_32 = torch.load('models/Tanh()_EMB128_Context32.pth',map_location = device)
     tanh_128_32 = {k.replace("_orig_mod.", ""): v for k, v in tanh_128_32.items()}
     model6.load_state_dict(tanh_128_32)
     model7 = NextWord(16, len(stoi), 256, [512, 512, 512], nn.Tanh()).to(device)
-    tanh_256_16 = torch.load('Tanh()_EMB256_Context16.pth',map_location = device)
+    tanh_256_16 = torch.load('models/Tanh()_EMB256_Context16.pth',map_location = device)
     tanh_256_16 = {k.replace("_orig_mod.", ""): v for k, v in tanh_256_16.items()}
     model7.load_state_dict(tanh_256_16)
     model8 = NextWord(32, len(stoi), 256, [512, 512, 512], nn.Tanh()).to(device)
-    tanh_256_32 = torch.load('Tanh()_EMB256_Context32.pth',map_location = device)
+    tanh_256_32 = torch.load('models/Tanh()_EMB256_Context32.pth',map_location = device)
     tanh_256_32 = {k.replace("_orig_mod.", ""): v for k, v in tanh_256_32.items()}
     model8.load_state_dict(tanh_256_32)
 
