@@ -5,6 +5,7 @@ from nltk.tokenize import word_tokenize
 import nltk
 import re
 import pickle
+import numpy as np
 nltk.download('punkt_tab')
 device = torch.device('cpu')
 symbols = r"([+\-/*^=0123456789.,|'()])"
@@ -128,6 +129,12 @@ def get_model(models, activation, embedding_size, context_length):
     key = f"{prefix}_{embedding_size}_{context_length}"
     return models[key]
 
+def get_embeddings(model):
+    emb = model.emb.weight.data.cpu().numpy()
+    return emb
+
+
+
 def main():
     st.header("Middle School Level Questions Generator")
     
@@ -143,8 +150,7 @@ def main():
     random_seedd = st.number_input(label="Enter the random seed (if required, 0 indicates no random seed)", min_value=0, step=1)
 
     user_input = st.text_input('Enter anything you want the question to start with')
-
-
+    
     if st.button("Generate Questions"):
       if random_seedd!=0:
           torch.manual_seed(random_seedd)
@@ -160,6 +166,23 @@ def main():
             random_seed = None
         )
         st.write(generated_text)
-
+    sim_word = st.text_input('Enter a word to find the top 10 similar words')
+    if st.button("Find Similar Words"):
+        model_ = get_model(models, activation, embedding_size, context_length)
+        emb = get_embeddings(model_)
+        word = sim_word
+        word_id = stoi.get(word, 0)
+        if word_id == 0:
+            st.write("Word not found in the dictionary")
+        else:
+            word_emb = emb[word_id]
+            similarities = []
+            for i, emb_i in enumerate(emb):
+                #similarity = np.sum((word_emb-emb_i)**2)
+                similarity = np.dot(word_emb, emb_i) / (np.linalg.norm(word_emb) * np.linalg.norm(emb_i))
+                similarities.append((itos[i], similarity))
+            similarities = sorted(similarities, key=lambda x: x[1], reverse=True)
+            for i in range(1, 11):
+                st.write(*similarities[i])
 if __name__ == "__main__":
     main()
