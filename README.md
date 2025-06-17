@@ -20,7 +20,7 @@ The main data preprocessing and model training file is `main_train_models.ipynb`
 
 Since the visualisations are very large in size, the streamlit app also has a feature to query the top - similar words to a given word based on cosine similarity.
 
-![alt text](image.png)
+![alt text](interface_similar_words.png)
 
 Misc:
 
