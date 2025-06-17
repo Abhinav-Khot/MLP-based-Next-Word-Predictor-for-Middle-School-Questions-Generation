@@ -20,6 +20,8 @@ The main data preprocessing and model training file is `main_train_models.ipynb`
 
 Since the visualisations are very large in size, the streamlit app also has a feature to query the top - similar words to a given word based on cosine similarity.
 
+![alt text](image.png)
+
 Misc:
 
 As part of the project we have also comapred the performance on MLP vs RF and Logisitic regression models on the MNIST dataset. These results can be found in `misc-MLPperf_onMNIST.ipynb`
